@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+body {
+	background-color:#f7ffdc;
+}
+#header {
+	width: 100%;
+	height:10%;
+	position: fixed;
+	background-color:#ffbd00;
+	color:#000000;
+	top:0;
+	left:0;
+	font-family:'Anton', sans-serif;
+	text-transform:capitalize;
+}
+#create button {
+	background-color:#4CAF50;
+	border:none;
+	color:white;
+	position:relative;
+}
+#add, #view {
+	display:none;
+	background-color:#ff7800;
+	border:1px solid #ccc;
+	color:white;
+}
+#create {
+	float:left;
+	position:absolute;
+	top:15% !important;
+	width:20%;
+	font-family:'Permanent Marker', cursive;
+	z-index:-1;
+	visibility:visible;
+	display:block;
+	left:0px;
+}
+.item {
+	z-index:20;
+	width:20% !important;
+	top:-100px;
+	left:30%;
+	visibility:visible;
+}
+#bottom-bun {
+	background-image:url("../images/bottom-bun.jpg");
+	border-radius:10px 10px 50px 50px;
+	height:40px;
+	position:absolute;
+	float:left;
+	top:55%;
+}
+#cheese2 {
+
+	background-image:url("../images/cheese.jpg");
+	border-radius:10px;
+	height:10px;
+	float:left;
+	position:absolute;
+}
+#lettuce2 {
+	background-image:url("../images/lettuce.jpg");
+	border-radius:10px;
+	height:10px;
+	float:left;
+	position:absolute;
+}
+#beef2 {
+	background-image:url("../images/beef.jpg");
+	border-radius:10px;
+	height:20px;
+	float:left;
+	position:absolute;
+
+}
+#tomato2 {
+	background-image:url("../images/tomato.jpg");
+	border-radius:10px;
+	height:15px;
+	float:left;
+	position:absolute;
+}
+#pickle2 {
+	background-image:url("../images/pickle.jpeg");
+	border-radius:10px;
+	height:15px;
+	float:left;
+	position:absolute;
+}
+#cucumber2 {
+	background-image:url("../images/cucumber.jpg");
+	border-radius:10px;
+	height:15px;
+	float:left;
+	position:absolute;
+
+}
+#chicken2 {
+	background-image:url("../images/chicken.jpg");
+	border-radius:10px;
+	height:20px;
+	float:left;
+	position:absolute;
+}
+#vegetarian2 {
+	background-image:url("../images/vegetarian.jpg");
+	border-radius:10px;
+	height:20px;
+	float:left;
+	position:absolute;
+}
+#top-bun2 {
+	background-image:url("../images/top-bun.jpg");
+	background-size:200px;
+	border-radius:80px 80px 10px 10px;
+	height:40px;
+	position:absolute;
+	float:left;
+	
+}
+#about {
+	display:inline-block;
+	float:right;
+	width:30%;
+	top:15%;
+	left:65%;
+	position:absolute;
+	border:1px solid #000000;
+}
+#about h2 {
+	font-family:'Shadows Into Light', cursive;
+}
+#about p {
+	font-family:'Caveat', cursive;
+}
+
+@media screen and (max-width:550px) {
+	#create {
+		left:-1000px;
+		width:100%;
+		display:block;
+	}
+	.item {
+		left:25%;
+		width:50%;
+		visibility:visible;
+	}
+	#bottom-bun {
+		top:55%;
+	}
+	#about {
+		left:10%;
+		width:80%;
+		top:70%;
+	}
+	#add {
+		position:absolute;
+		display:block;
+		left:50%;
+		top:65%;
+	}
+	#view {
+		position:absolute;
+		left:50%;
+		top:65%;
+	}
+}
+@media screen and (min-width:551px) and (max-width:850px) {
+	#create {
+		left:10% !important;
+		width:40%;
+		display:block;
+		visibility:visible;
+	}
+	.item {
+		left:50% !important;
+		width:40%;
+		position:relative;
+		visibility:visible;
+	}
+
+	#bottom-bun {
+		top:55%;
+	}
+	#about {
+		left:10%;
+		width:60%;
+		top:70%;
+	}
+	#add, #view {
+		display:none;
+	}
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CGT 353 Project 2</title>
+	<link rel = "stylesheet" href="css/styles.css">
+</head>
+<body>
+	<div id = "header">
+		<center>
+			<h1>BURGER BUILDER</h1>
+		</center>
+	</div>
+		<button id = "add">Add Ingredients</button>
+		<button id = "view">View Burger</button>
+	<br>
+		<div class = "item" id = "bottom-bun"></div>
+		<div class = "item" id = "cheese2"></div>
+		<div class = "item" id = "lettuce2"></div>
+		<div class = "item" id = "beef2"></div>
+		<div class = "item" id = "tomato2"></div>
+		<div class = "item" id = "pickle2"></div>
+		<div class = "item" id = "cucumber2"></div>
+		<div class = "item" id = "chicken2"></div>
+		<div class = "item" id = "vegetarian2"></div>
+		<div class = "item" id = "top-bun2"></div>
+	<div id = "create">
+		<center>
+			<h2>Ingredients</h2>
+			<button class = "btn" id = "cheese">Add Cheese</button><br>
+			<button class = "btn" id = "lettuce">Add Lettuce</button><br>
+			<button class = "btn" id = "tomato">Add Tomato</button><br>
+			<button class = "btn" id = "pickle">Add Pickle</button><br>
+			<button class = "btn" id = "cucumber">Add Cucumber</button><br>
+			<button class = "btn" id = "beef">Add Beef Patty</button><br>
+			<button class = "btn" id = "chicken">Add Chicken Patty</button><br>
+			<button class = "btn" id = "vegetarian">Add Vegetarian Patty</button><br>
+			<button class = "btn" id = "top-bun">Finish Burger</button><br>
+		</center>
+	</div>
+	<div id = "about">
+		<h2 id = "name">Hover over an ingredient to learn more about it!</h2>
+		<p id = "description"></p>
+	</div>
+	<script src = "js/jquery-3.5.1.min.js"></script>
+	<script type = "text/javascript">
+		$(document).ready(function() {
+			var curr = "#bottom-bun";
+			var counter = 0;
+			var view = true;
+			$(".btn").click(function() {
+				counter++;
+				var clicked = "#" + $(this).attr("id");
+				var position = $(curr).position();
+				var final = position.top - $(clicked + "2").height();
+				$(clicked + "2").animate({
+					top: final
+				}, 'slow');
+				if(counter == 1) {
+					$(clicked + "2").animate({
+						top: "+=" + 10
+					});
+				}
+				curr = clicked + 2;
+				$(clicked).prop("disabled", true);
+				$(clicked).css("background-color", "#FF0000");	
+				if(clicked === "#top-bun") {
+					$(".btn").prop("disabled", true);
+					$(".btn").css("background-color", "#FF0000");
+				}
+				if($(window).width() <= 550) {
+					$("#view").click();
+				}
+			});
+			$(".item").hover(function() {
+				switch($(this).attr("id")) {
+					case "bottom-bun":
+						$("#name").text("Bottom of burger bun");
+						$("#description").text("Bottom half of a sliced, toasted, buttered brioche bun.");
+						break;
+					case "cheese2":
+						$("#name").text("Cheese");
+						$("#description").text("Fresh toasted cheddar cheese that melts in your mouth.");
+						break;
+					case "lettuce2":
+						$("#name").text("Lettuce");
+						$("#description").text("Organic lettuce that is washed and seasoned with salt and spices to add extra flavor.");
+						break;
+					case "beef2":
+						$("#name").text("Beef Patty");
+						$("#description").text("Grilled beef steak patty made with fresh meat, sea salt, herbs, spices, barbeque sauce, butter, and olive oil to ensure each bite is a juicy one!");
+						break;
+					case "tomato2":
+						$("#name").text("Tomato");
+						$("#description").text("Raw roma tomato picked ripe and sliced thin.");
+						break;
+					case "pickle2":
+						$("#name").text("Pickle");
+						$("#description").text("Most pickles are sour, but this one is seasoned with lots of salt, spices, and sweet powders to ensure the juices from it are tangy.");
+						break;
+					case "cucumber2":
+						$("#name").text("Cucumber");
+						$("#description").text("Organic cucumber with peeled skin and thick, juicy slices.");
+						break;
+					case "chicken2":
+						$("#name").text("Chicken Patty");
+						$("#description").text("Salted, spiced, marinated, and then fried chicken to provide a flavorful crunch with every bite of this delicious patty.");
+						break;
+					case "vegetarian2":
+						$("#name").text("Vegetarian Patty");
+						$("#description").text("A blend of corn, carrots, black beans, potatoes, red peppers, and a crispy breadcrumb crust.");
+						break;
+					case "top-bun2":
+						$("#name").text("Top of burger bun");
+						$("#description").text("Top half of a sliced, toasted, buttered brioche bun. Has sesame seed topping.");
+				}
+			}, function() {
+				$("#name").text("Hover over an ingredient to learn more about it!");
+				$("#description").text("");
+			});
+			$("#add").click(function() {
+				view = false;
+				$(".item").animate({left: "-1000px"});
+				$("#create").animate({left: "10%"});
+				$("#about").hide();
+				$("#view").css("display", "block");	
+				$("#add").css("display", "none");		
+			});
+			$("#view").click(function() {
+				view = true;
+				$(".item").animate({left: "25%"});
+				$("#create").animate({left: "-1000px"});
+				$("#add").css("display", "block");
+				$("#about").show();
+				$("#view").css("display", "none");		
+			});
+			
+			$(window).resize(function() {
+				if($(window).width() >= 551 && $(window).width() <= 850) {
+					$("#about").show();
+					$(".item").css("left", "10%");
+					$(".item").css("width", "40%");
+					$("#about").css("width", "60%");
+					$("#about").css("top", "70%");
+					$("#about").css("left", "10%");
+					$("#create").css("left", "0px");
+				}
+				if($(window).width() <= 550) {
+					$("#about").css("left", "10%");
+					$("#about").css("width", "80%");
+					$("#about").css("top", "70%");
+					$(".item").css("left", "25%");
+					$(".item").css("width", "50%");
+					if(view) {
+						$("#about").show();
+						$("#create").css("left", "-1000px");
+					}
+					else {
+						$("#about").hide();
+						$(".item").css("left", "-1000px");
+					}
+				}
+				if($(window).width() >= 851) {
+					$(".item").css("width", "20%");
+					$(".item").css("left", "30%");
+					$("#about").css("top", "15%");
+					$("#about").css("left", "65%");
+					$("#about").css("width", "30%");
+					$("#create").css("left", "0px");
+				}
+			});
+
+			/*$(window).resize(function() {
+				if($(window).width() >= 551 && $(window).width() <= 850) {
+					$(".item").animate({left: "50%"});
+					$("#create").animate({left:"10%"});
+					$("#about").show();
+					$("#about").animate({left: "10%"});
+					$("#about").animate({top: "70%"});
+					$("#about").animate({width: "60%"});
+				}
+				if($(window).width() >= 851) {
+					$(".item").animate({left: "50%"});
+					$("#create").animate({left:"10%"});
+					$("#about").animate({left:"65%"});
+					$("#about").animate({top: "15%"});
+					$("#about").animate({width: "30%"});
+				}
+				if($(window).width() <= 550) {
+					if(view) {
+						$("#create").animate({left: "-1000px"});
+						$(".item").animate({left: "50%"});
+						$("#about").animate({top: "70%"});
+						$("#about").animate({width: "80%"});
+						$("#about").animate({left: "10%"});
+						$("#about").show();
+					}
+					else {
+						$("#create").animate({left: "10%"});
+						$(".item").animate({left: "-1000px"});
+						$("#about").hide();
+					}
+					console.log("hey");
+				}
+			}); */
+		});
+	</script>
+</body>
+</html>
